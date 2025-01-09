@@ -1,59 +1,55 @@
-import React, { useState } from "react";
-import './../styles/App.css';
+import React, { useState } from 'react';
 import Step from './Step';
-
-const App = () => {
-  const [currentstep, setcurrentstep] = useState(1);
-  const [formdata, setformdata] = useState([{
-    first_name : "",
-    last_name:"",
-    model:"",
-    car_price:"",
-    card_info:"",
-    expiry_date:"",  
-  }]);
-
-  // const handlenext=()=>setcurrentstep((prev)=>prev+1);
-  const handlenext = () => {
-    setcurrentstep((prevStep) => {
-      if (prevStep < 3) return prevStep + 1;
-      return prevStep;
-    });
+ 
+function App() {
+  const [currentStep, setCurrentStep] = useState(1);
+  const [formData, setFormData] = useState({
+    first_name: '',
+    last_name: '',
+    model: '',
+    car_price: '',
+    card_info: '',
+    expiry_date: ''
+  });
+ 
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+    setFormData({ ...formData, [id]: value });
   };
-  
-  // const handleprev =()=>setcurrentstep((prev)=>prev-1);
-
-  const handleprev = () => {
-    setcurrentstep((prevStep) => {
-      if (prevStep > 1) return prevStep - 1;
-      return prevStep;
-    });
+ 
+  const handleNext = () => {
+    if (currentStep < 3) {
+      setCurrentStep(prevStep => prevStep + 1);
+    }
   };
-  
-
-  const handlesubmit=(e)=>{
-    e.preventDefault();
-    console.log("form submitted:", formdata);
+ 
+  const handlePrevious = () => {
+    if (currentStep > 1) {
+      setCurrentStep(prevStep => prevStep - 1);
+    }
   };
-
-  const handleinputchange=(e)=>{
-    const {id , value} = e.target;
-    setformdata((prevdata)=>({
-      ...prevdata,
-      [id]:value,
-    }));
+ 
+  const handleSubmit = () => {
+    alert('Form submitted!');
+    console.log(formData);
   };
-
+ 
   return (
     <div>
-      <div>
-          <Step step={currentstep} formdata={formdata} handleinputchange={handleinputchange} handlenext={handlenext}
-            handleprev={handleprev} handlesubmit={handlesubmit}
-          />
-
-      </div>
+      <h1>Multi-Step Form</h1>
+      <Step
+        step={currentStep}
+        formData={formData}
+        onChange={handleChange}
+        onNext={handleNext}
+        onPrevious={handlePrevious}
+        onSubmit={handleSubmit}
+      />
     </div>
-  )
+  );
 }
-
-export default App
+ 
+export default App;
+ 
+ 
+ 
