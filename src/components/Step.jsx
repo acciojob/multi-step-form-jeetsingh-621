@@ -69,7 +69,7 @@ function Step({ step, formData, onChange, onNext, onPrevious, onSubmit }) {
           <label>
             Expiry Date:
             <input
-              type="date"
+              type="text"
               id="expiry_date"
               value={formData.expiry_date}
               onChange={onChange}
