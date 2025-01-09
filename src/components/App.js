@@ -13,8 +13,23 @@ const App = () => {
     expiry_date:"",  
   }]);
 
-  const handlenext=()=>setcurrentstep((prev)=>prev+1);
-  const handleprev =()=>setcurrentstep((prev)=>prev-1);
+  // const handlenext=()=>setcurrentstep((prev)=>prev+1);
+  const handlenext = () => {
+    setcurrentstep((prevStep) => {
+      if (prevStep < 3) return prevStep + 1;
+      return prevStep;
+    });
+  };
+  
+  // const handleprev =()=>setcurrentstep((prev)=>prev-1);
+
+  const handleprev = () => {
+    setcurrentstep((prevStep) => {
+      if (prevStep > 1) return prevStep - 1;
+      return prevStep;
+    });
+  };
+  
 
   const handlesubmit=(e)=>{
     e.preventDefault();
