@@ -5,7 +5,7 @@ const Step = ({step,handlesubmit,handleprev,handlenext,formdata,handleinputchang
     <div>
 
         <form onSubmit={handlesubmit}>
-           {step === 1 && ( <div>
+           {step === 1 && ( <div id='step1'>
                 <h2>Customer Detail</h2>
                 <label htmlFor="">First Name:</label>
             <input type="text"  required id='first_name' value={formdata.first_name} onChange={handleinputchange}/>
@@ -15,7 +15,7 @@ const Step = ({step,handlesubmit,handleprev,handlenext,formdata,handleinputchang
             </div>)}
 
           {step === 2 && (
-              <div>
+              <div id='step2'>
               <h2>Car Detail</h2>
               <label htmlFor="">Car Model:</label>
               <input type="text" name="" id="model" value={formdata.model} onChange={handleinputchange} required />
@@ -26,7 +26,7 @@ const Step = ({step,handlesubmit,handleprev,handlenext,formdata,handleinputchang
           )}
 
         {step === 3 &&(
-                <div>
+                <div id='step3'>
                 <h2>Payment Detail </h2>
                 <label htmlFor="">Card Info:</label>
                 <input type="text" id='card_info' value={formdata.card_info} required />
